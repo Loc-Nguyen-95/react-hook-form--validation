@@ -141,20 +141,20 @@ c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
 
 * Useful Resources & Links 
 
-    Docs: 
-        * event loop Nodejs
-            https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick
+  Docs: <br>
+  * event loop Nodejs: <br>
+        https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick
 
-        * express:
+  * express: <br>
             https://expressjs.com/en/guide/routing.html 
 
-        * view engine (app.set)
+  * view engine (app.set):<br>
             https://expressjs.com/en/4x/api.html#app.set
 
-        * body-parser 
+  * body-parser :<br>
             https://expressjs.com/en/resources/middleware/body-parser.html
         
-        * routing
+  * routing: <br>
             https://expressjs.com/en/guide/routing.html#routing
 
 

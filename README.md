@@ -27,7 +27,21 @@
 
 <h3>CSS</h3>
 
-    Serve static file: app.use( express.static(...) )
+    Serve static file: app.use( express.static(...　'public') )
+
+    ->VD external css :  link href=" / folder in public / file (full name) "
+
+    * Note: Toggle menu 
+        
+        button Menu id "toogle"
+
+        div class "backdrop"
+
+        view file ejs chèn < script src=" /js/main.js " >
+            add event listener 'click' 
+            function excute 
+                style.display = 'block/none'
+                classList.add/remove = 'open'  (css open)
 
 <h3>Add product to cart, delete cart item</h3>
 
@@ -56,7 +70,7 @@ a. __method addProduct__ (id, Price)
 
             writeFile cart 
 
-        b. method get Cart 
+b. __method get Cart__ 
             readFile
 
 c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
@@ -82,7 +96,65 @@ c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
                     writeFile (updated_cart) 
 
 
+<h3>Edit , Delete product (admin)</h3>
+
+    1. Edit **
+
+    GD1: Chuyển qua view form edit 
+        button edit -> a href = " /.../ param: product.id " ( GET )
+
+        route Get '/.../ :ID 
+
+        controller get form edit 
+            ID = req.params. ..
+            Product.findById(ID) -> product
+
+                editing : true 
+                product: product
+
+        view (form add nhưng nhận [ editing: true] và [product] )
+
+            if editing true 
+                input have value : product. ... ---> post body
+                Thêm trường id : product.id 
+
+        GD2: thực hiện post từ data form edit
+            route 
+            controller nhận data : req.body 
+            Xử lí data mới bằng model Product.save() (với id)
+            redirect về .../products
+
+    2. Delete 
+    
+        button form POST
+            input name ... value = product.id 
+
+        model Product -> static deleteProduct 
+
+            readFile 
+            updatedProducts = filter !id 
+            writeFile ( updatedProducts )
+
+        controller 
+            nhận id = req.body. ... 
+            Product.deleteProduct( id )
+
 * Useful Resources & Links 
 
-    Docs: https://expressjs.com/en/guide/routing.html 
+    Docs: 
+        * event loop Nodejs
+            https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick
+
+        * express:
+            https://expressjs.com/en/guide/routing.html 
+
+        * view engine (app.set)
+            https://expressjs.com/en/4x/api.html#app.set
+
+        * body-parser 
+            https://expressjs.com/en/resources/middleware/body-parser.html
+        
+        * routing
+            https://expressjs.com/en/guide/routing.html#routing
+
 

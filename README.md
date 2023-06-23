@@ -35,7 +35,7 @@
 
     2. add new product to cart with id (model method)
 
-        a. method <b>addProduct</b> (id, Price)
+a. __method addProduct__ (id, Price)
             cart = { products: [], totalPrice: 0 }
             cart = readFile (parse data) if not err
             Find product_index 
@@ -59,7 +59,7 @@
         b. method get Cart 
             readFile
 
-        c. <b>delete Cart</b> (ID, PRICE) //tất nhiên có data trong file json
+c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
 
             (1) readFile 
 

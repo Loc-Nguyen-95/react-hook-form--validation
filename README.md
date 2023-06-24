@@ -1,6 +1,6 @@
 # NODEAPP - Part2 : Create a website with Express, Template engine, M-V-C
 
-<h3>Express.js</h3>  
+## Express.js
 
     app = call express()
     
@@ -10,12 +10,12 @@
 
     app.set : view engine
 
-<h3>Template engine</h3>
+## Template engine
 
     RES.render(view) 
         Trong đó : view : view engine (dạng String) : VD: 'admin/add-product'
 
-<h3>Model</h3>
+## Model
 
     Read file json : fs.readFile(path, (error, content) => { ...} )
     
@@ -25,13 +25,13 @@
         + save() 
     }
 
-<h3>CSS</h3>
+## CSS
 
-    Serve static file: app.use( express.static(...　'public') )
+Serve static file: app.use( express.static(...　'public') )
 
-    ->VD external css :  link href=" / folder in public / file (full name) "
+->VD external css :  link href="/folder in public/file (full name)"
 
-    * Note: Toggle menu 
+* Note: Toggle menu 
         
         button Menu id "toogle"
 
@@ -43,13 +43,13 @@
                 style.display = 'block/none'
                 classList.add/remove = 'open'  (css open)
 
-<h3>Add product to cart, delete cart item</h3>
+## Add product to cart, delete cart item
 
-    1. Button "Add to cart", method: Post, value: product Id
+1. Button "Add to cart", method: Post, value: product Id
 
-    2. add new product to cart with id (model method)
+2. add new product to cart with id (model method)
 
-a. __method addProduct__ (id, Price)
+__a. method addProduct__ (id, Price)
             cart = { products: [], totalPrice: 0 }
             cart = readFile (parse data) if not err
             Find product_index 
@@ -70,10 +70,10 @@ a. __method addProduct__ (id, Price)
 
             writeFile cart 
 
-b. __method get Cart__ 
+__b. method get Cart__ 
             readFile
 
-c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
+__c. delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
 
             (1) readFile 
 
@@ -96,7 +96,7 @@ c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
                     writeFile (updated_cart) 
 
 
-<h3>Edit , Delete product (admin)</h3>
+## Edit , Delete product (admin)
 
 __1. Edit **__
 
@@ -138,6 +138,7 @@ __Delete__
         controller 
             nhận id = req.body. ... 
             Product.deleteProduct( id )
+
 
 * Useful Resources & Links 
 

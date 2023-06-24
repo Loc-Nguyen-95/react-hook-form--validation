@@ -125,7 +125,7 @@ c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
             redirect về .../products
 
     2. Delete 
-    
+
         button form POST
             input name ... value = product.id 
 

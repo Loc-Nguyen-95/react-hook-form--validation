@@ -124,7 +124,7 @@ __1. Edit **__
             Xử lí data mới bằng model Product.save() (với id)
             redirect về .../products
 
-    2. Delete 
+__Delete__ 
 
         button form POST
             input name ... value = product.id 

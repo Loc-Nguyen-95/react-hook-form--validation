@@ -98,9 +98,9 @@ c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
 
 <h3>Edit , Delete product (admin)</h3>
 
-    1. Edit **
+__1. Edit **__
 
-    GD1: Chuyển qua view form edit 
+- GD1: Chuyển qua view form edit 
         button edit -> a href = " /.../ param: product.id " ( GET )
 
         route Get '/.../ :ID 
@@ -118,7 +118,7 @@ c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
                 input have value : product. ... ---> post body
                 Thêm trường id : product.id 
 
-        GD2: thực hiện post từ data form edit
+- GD2: thực hiện post từ data form edit
             route 
             controller nhận data : req.body 
             Xử lí data mới bằng model Product.save() (với id)
@@ -141,20 +141,20 @@ c. __delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
 
 * Useful Resources & Links 
 
-    Docs: 
-        * event loop Nodejs
-            https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick
+  Docs: <br>
+  * event loop Nodejs: <br>
+        https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick
 
-        * express:
+  * express: <br>
             https://expressjs.com/en/guide/routing.html 
 
-        * view engine (app.set)
+  * view engine (app.set):<br>
             https://expressjs.com/en/4x/api.html#app.set
 
-        * body-parser 
+  * body-parser :<br>
             https://expressjs.com/en/resources/middleware/body-parser.html
         
-        * routing
+  * routing: <br>
             https://expressjs.com/en/guide/routing.html#routing
 
 

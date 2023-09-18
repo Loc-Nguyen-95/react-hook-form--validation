@@ -1,161 +1,70 @@
-# NODEAPP - Part2 : Create a website with Express, Template engine, M-V-C
+# Getting Started with Create React App
 
-## Express.js
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-    app = call express()
-    
-    app.use : midleware
+## Available Scripts
 
-    app.listen : port 
+In the project directory, you can run:
 
-    app.set : view engine
+### `npm start`
 
-## Template engine
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-    RES.render(view) 
-        Trong đó : view : view engine (dạng String) : VD: 'admin/add-product'
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## Model
+### `npm test`
 
-    Read file json : fs.readFile(path, (error, content) => { ...} )
-    
-    class ModelName {
-        + constructor()
-        + static fetchAll() : Phương thức tĩnh
-        + save() 
-    }
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## CSS
+### `npm run build`
 
-Serve static file: app.use( express.static(...　'public') )
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-->VD external css :  link href="/folder in public/file (full name)"
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-* Note: Toggle menu 
-        
-        button Menu id "toogle"
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-        div class "backdrop"
+### `npm run eject`
 
-        view file ejs chèn < script src=" /js/main.js " >
-            add event listener 'click' 
-            function excute 
-                style.display = 'block/none'
-                classList.add/remove = 'open'  (css open)
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## Add product to cart, delete cart item
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-1. Button "Add to cart", method: Post, value: product Id
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-2. add new product to cart with id (model method)
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-__a. method addProduct__ (id, Price)
-            cart = { products: [], totalPrice: 0 }
-            cart = readFile (parse data) if not err
-            Find product_index 
+## Learn More
 
-            let updated_product 
-                if product_index 
-                    + updated_product = {...product_index} // {...spread}
-                    updated_product.qty = updated_product.qty + 1
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-                    + cart.products = [...cart.products] // {...spread}
-                    cart.products_index = updated_product
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-                else (not find product_index)
-                    + updated_product = {id : id, qty: 1}
-                    + cart.products = [...cart.products, updated_product]
-                
-            cart.totalPrice = cart.totalPrice + Price
+### Code Splitting
 
-            writeFile cart 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-__b. method get Cart__ 
-            readFile
+### Analyzing the Bundle Size
 
-__c. delete Cart__ (ID, PRICE) //tất nhiên có data trong file json
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-            (1) readFile 
+### Making a Progressive Web App
 
-                if not err 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-                    (2) updated_cart = {...parse(content)}; // đưa về dạng { object }
+### Advanced Configuration
 
-                    (3) Tìm product xoá trong Cart 
-                    const product = list products data -> find by ID
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-                    if not product 
-                        return 
-                    
-                    (4)
-                    // update lại list product (thuộc cart) mới bằng cách filter !id 
-                    
-                    // tính lại price bằng cách 
-                        updated_cart.totalPrice = updated_cart.totalPrice - PRICE * product.qty
+### Deployment
 
-                    writeFile (updated_cart) 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
+### `npm run build` fails to minify
 
-## Edit , Delete product (admin)
-
-__1. Edit **__
-
-- GD1: Chuyển qua view form edit 
-        button edit -> a href = " /.../ param: product.id " ( GET )
-
-        route Get '/.../ :ID 
-
-        controller get form edit 
-            ID = req.params. ..
-            Product.findById(ID) -> product
-
-                editing : true 
-                product: product
-
-        view (form add nhưng nhận [ editing: true] và [product] )
-
-            if editing true 
-                input have value : product. ... ---> post body
-                Thêm trường id : product.id 
-
-- GD2: thực hiện post từ data form edit
-            route 
-            controller nhận data : req.body 
-            Xử lí data mới bằng model Product.save() (với id)
-            redirect về .../products
-
-__Delete__ 
-
-        button form POST
-            input name ... value = product.id 
-
-        model Product -> static deleteProduct 
-
-            readFile 
-            updatedProducts = filter !id 
-            writeFile ( updatedProducts )
-
-        controller 
-            nhận id = req.body. ... 
-            Product.deleteProduct( id )
-
-
-* Useful Resources & Links 
-
-  Docs: <br>
-  * event loop Nodejs: <br>
-        https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick
-
-  * express: <br>
-            https://expressjs.com/en/guide/routing.html 
-
-  * view engine (app.set):<br>
-            https://expressjs.com/en/4x/api.html#app.set
-
-  * body-parser :<br>
-            https://expressjs.com/en/resources/middleware/body-parser.html
-        
-  * routing: <br>
-            https://expressjs.com/en/guide/routing.html#routing
-
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
